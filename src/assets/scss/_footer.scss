@@ -1,0 +1,12 @@
+#footer {
+  background: #343a40;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+
+  br {
+    @include media-breakpoint-up(sm) {
+      display: none;
+    }
+  }
+}
