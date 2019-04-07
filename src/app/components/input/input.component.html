@@ -1,0 +1,12 @@
+<label [for]="getInputId()">
+  <ng-content></ng-content>
+</label>
+<input
+  [type]="type"
+  class="form-control"
+  [placeholder]="placeholder"
+  [name]="name"
+  [id]="getInputId()"
+  [(ngModel)]="value"
+/>
+<div class="invalid-feedback">Error message</div>

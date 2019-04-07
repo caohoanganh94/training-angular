@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i');
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import 'assets/scss/variables';
+@import 'assets/scss/mixins';
+@import '~bootstrap/scss/bootstrap';
+@import 'assets/scss/global';
+@import 'assets/scss/header';
+@import 'assets/scss/footer';
+@import 'assets/scss/main';

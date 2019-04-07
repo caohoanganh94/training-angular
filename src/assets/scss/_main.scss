@@ -1,0 +1,17 @@
+#main {
+  min-height: calc(100vh - 55px - 66px);
+
+  @include media-breakpoint-up(sm) {
+    min-height: calc(100vh - 55px - 43px);
+  }
+
+  .page {
+    padding: 30px 0;
+
+    & > * {
+      &:last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+}
