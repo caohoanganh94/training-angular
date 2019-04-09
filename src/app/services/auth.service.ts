@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { User } from '../models/user';
 import { Cookie } from '../helpers/cookie';
 
-const AUTH_API_URL = 'https://demo.crefox.com/news-sun-training/wp-json/jwt-auth/v1/token';
+const AUTH_API_URL = 'http://blog-api.local/wp-json/jwt-auth/v1/token';
 
 @Injectable({
   providedIn: 'root'

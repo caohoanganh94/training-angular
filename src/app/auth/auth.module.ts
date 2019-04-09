@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { InputComponent } from '../components/input/input.component';
 import { ButtonSubmitComponent } from '../components/button-submit/button-submit.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthRoutingModule } from './auth-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,10 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
-  ],
-  exports: [
-    LoginComponent
+    HttpClientModule,
+    AuthRoutingModule
   ]
 })
 export class AuthModule { }
+
+console.log('Auth Module loaded!');
