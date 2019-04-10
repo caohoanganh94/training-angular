@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Color } from 'src/app/models/color.enum';
+import { Color } from 'src/app/shared/enums/color.enum';
 
 @Component({
   selector: 'app-button-submit',

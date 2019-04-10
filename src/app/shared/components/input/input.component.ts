@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { InputType } from 'src/app/models/input-type.enum';
+import { InputType } from 'src/app/shared/enums/input-type.enum';
 
 @Component({
   selector: 'app-input',

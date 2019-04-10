@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Size } from 'src/app/models/size.enum';
-import { Color } from 'src/app/models/color.enum';
+import { Size } from 'src/app/shared/enums/size.enum';
+import { Color } from 'src/app/shared/enums/color.enum';
 
 @Component({
   selector: 'app-button',

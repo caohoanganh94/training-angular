@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { User } from '../models/user';
-import { Cookie } from '../helpers/cookie';
+import { User } from '../../shared/models/user';
+import { Cookie } from '../../shared/models/cookie';
 
 const AUTH_API_URL = 'http://blog-api.local/wp-json/jwt-auth/v1/token';
 
