@@ -18,5 +18,3 @@ import { PostUpdateComponent } from './update/update.component';
   ]
 })
 export class PostModule { }
-
-console.log('Post Module loaded!');

@@ -11,5 +11,3 @@ import { AdminRoutingModule } from './admin-routing.module';
   ]
 })
 export class AdminModule { }
-
-console.log('Admin Module loaded!');
