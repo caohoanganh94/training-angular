@@ -1,0 +1,5 @@
+<div [ngClass]="['sort', customClass]">
+  <ng-content></ng-content>
+  <i [ngClass]="['fas', 'fa-sort-up', (isDisabled('asc') ? 'disabled' : '') ]"></i>
+  <i [ngClass]="['fas', 'fa-sort-down', (isDisabled('desc') ? 'disabled' : '') ]"></i>
+</div>

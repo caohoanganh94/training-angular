@@ -1,3 +1,146 @@
-<span>
-  Post listing
-</span>
+<div class="page page-listing page-posts">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-4 title">{{ settings.plural }}</h1>
+      <div class="header-bar">
+        <div class="row">
+          <div class="col-12 col-lg-4 col-xl-5">
+            <div class="button-create">
+              <app-button color="success" routerLink="/admin/posts/create">
+                <i class="far fa-plus-square"></i>
+                Create a {{ settings.singular }}
+              </app-button>
+              <app-button color="danger" *ngIf="settings.selected.length" (click)="deleteItems($event)">
+                <i class="far fa-trash-alt"></i>
+                Delete {{ settings.selected.length }}
+                <ng-container *ngIf="settings.selected.length > 1; then pluralWord else singularWord"></ng-container>
+                <ng-template #pluralWord>{{ settings.plural }}</ng-template>
+                <ng-template #singularWord>{{ settings.singular }}</ng-template>
+              </app-button>
+            </div>
+          </div>
+          <div class="col-12 col-lg-8 col-xl-7">
+            <div class="forms">
+              <div class="form-search">
+                <div class="form-group">
+                  <label>Search:</label>
+                  <input type="text" class="form-control" placeholder="Enter your keyword here..." #search (keyup)="onChangeSearch(search)">
+                </div>
+              </div>
+              <div class="form-show">
+                <div class="form-group">
+                  <label>Show:</label>
+                  <app-selectbox
+                    [options]="settings.shows"
+                    [value]="params.limit"
+                    (select)="onChangeLimit($event)"
+                  ></app-selectbox>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 49px;">
+                <ng-container *ngIf="posts.length; then checkboxBlock else emptyBlock"></ng-container>
+                <ng-template #checkboxBlock>
+                  <app-checkbox
+                    id="all-{{ params.page }}"
+                    [checked]="settings.selectedAll"
+                  ></app-checkbox>
+                </ng-template>
+                <ng-template #emptyBlock>&nbsp;</ng-template>
+              </th>
+              <th scope="col">
+                <app-sort
+                  field="title"
+                  [order]="params.order"
+                  (click)="onChangeOrder('title')"
+                >Title</app-sort>
+              </th>
+              <th scope="col">
+                <app-sort
+                  field="author"
+                  [order]="params.order"
+                  (click)="onChangeOrder('author')"
+                >Author</app-sort>
+              </th>
+              <th scope="col">Categories</th>
+              <th scope="col">Tags</th>
+              <th scope="col">
+                <app-sort
+                  field="date"
+                  [order]="params.order"
+                  (click)="onChangeOrder('date')"
+                >Date</app-sort>
+              </th>
+            </tr>
+          </thead>
+          <tbody [ngClass]="[(settings.loading) ? 'is-loading' : '']">
+            <ng-container *ngIf="posts.length < 1; then hasNoPostsBlock else hasPostsBlock"></ng-container>
+            <ng-template #hasNoPostsBlock>
+              <tr>
+                <td colspan="6" class="text-center">{{ settings.notFoundMessage }}</td>
+              </tr>
+            </ng-template>
+            <ng-template #hasPostsBlock>
+              <tr *ngFor="let post of posts" [ngClass]="[isSelected(post.id) ? 'table-info' : '']">
+                <td>
+                  <app-checkbox
+                    [id]="post.id"
+                    [value]="post.id"
+                    [checkedItems]="settings.selected"
+                  ></app-checkbox>
+                </td>
+                <td>
+                  <div style="width: 300px;" class="text-truncate">
+                    {{ post.title.rendered }}
+                  </div>
+                </td>
+                <td>{{ post.author }}</td>
+                <td>Categories</td>
+                <td>Tags</td>
+                <td>{{ post.date }}</td>
+              </tr>
+            </ng-template>
+            <div class="loading"><app-spinner></app-spinner></div>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="footer-bar" *ngIf="posts.length">
+        <div class="row">
+          <div class="col-12 col-md-9">
+            <nav aria-label="...">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active" aria-current="page">
+                  <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-12 col-md-3">
+            <div class="text-md-right">
+              <ng-container *ngIf="settings.showing; then showingBlock else loadingBlock"></ng-container>
+              <ng-template #showingBlock>{{ settings.showing }}</ng-template>
+              <ng-template #loadingBlock>Loading...</ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

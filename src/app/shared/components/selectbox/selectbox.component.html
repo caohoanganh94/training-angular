@@ -1,0 +1,3 @@
+<select #select [ngClass]="['form-control', customClass]" [value]="value" [multiple]="multiple" (change)="onChange(select)">
+  <option *ngFor="let option of options" [value]="getOptionValue(option)">{{ getOptionLabel(option) }}</option>
+</select>

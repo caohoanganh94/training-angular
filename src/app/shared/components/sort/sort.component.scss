@@ -1,0 +1,27 @@
+.sort {
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  padding-right: 20px;
+
+  .fas, svg {
+    position: absolute;
+    right: 0;
+
+    &.fa-sort-up {
+      bottom: 50%;
+      margin-bottom: -6px;
+    }
+
+    &.fa-sort-down {
+      top: 50%;
+      margin-top: -7px;
+    }
+
+    &.disabled {
+      opacity: .3;
+    }
+  }
+}

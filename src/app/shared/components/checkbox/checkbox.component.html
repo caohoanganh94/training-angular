@@ -1,3 +1,13 @@
-<p>
-  checkbox works!
-</p>
+<div [ngClass]="['custom-control', 'custom-checkbox', customClass]">
+  <input
+    type="checkbox"
+    class="custom-control-input"
+    [id]="getCheckboxId()"
+    [value]="value"
+    [(ngModel)]="checked"
+    (change)="onChange()"
+  />
+  <label class="custom-control-label" [for]="getCheckboxId()">
+    <ng-content></ng-content>
+  </label>
+</div>

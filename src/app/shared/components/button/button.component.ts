@@ -10,13 +10,19 @@ import { Color } from 'src/app/shared/enums/color.enum';
 export class ButtonComponent implements OnInit {
   @Input() size: Size = Size.Medium;
   @Input() color: Color = Color.PRIMARY;
-  @Input() classes: string = '';
-  @Input() url: string = '';
+  @Input() url: string = '#';
+  @Input() customClass: string = '';
 
   constructor() { }
 
   ngOnInit() {
-    this.classes = `btn btn-${this.size} btn-${this.color}`;
+    this.customClass = `btn btn-${this.size} btn-${this.color}`;
+  }
+
+  onClick(event): void {
+    if (this.url === '#') {
+      event.preventDefault();
+    }
   }
 
 }
