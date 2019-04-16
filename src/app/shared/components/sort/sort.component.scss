@@ -6,6 +6,10 @@
   text-decoration: none;
   padding-right: 20px;
 
+  .disabled {
+    opacity: .3;
+  }
+
   .fas, svg {
     position: absolute;
     right: 0;
@@ -18,10 +22,6 @@
     &.fa-sort-down {
       top: 50%;
       margin-top: -7px;
-    }
-
-    &.disabled {
-      opacity: .3;
     }
   }
 }

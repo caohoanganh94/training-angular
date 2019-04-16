@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../../shared/services/api.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-listing',
@@ -8,6 +9,7 @@ import { ApiService } from '../../../../shared/services/api.service';
 })
 export class PostListingComponent implements OnInit {
   private posts: any[] = [];
+  private users;
   private settings = {
     plural: 'Posts',
     singular: 'Post',
@@ -32,7 +34,7 @@ export class PostListingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getPosts();
+    this.getUsers();
   }
 
   onChangeLimit(event) {
@@ -75,6 +77,15 @@ export class PostListingComponent implements OnInit {
     this.apiService.getPosts(this.params).subscribe(posts => {
       this.posts = posts;
       this.settings.loading = false;
+    });
+  }
+
+  getUsers() {
+    this.apiService.getUsers().subscribe(users => {
+      let usersArr = {};
+      users.map(user => usersArr[user.id] = user.name);
+      this.users = usersArr;
+      this.getPosts();
     });
   }
 

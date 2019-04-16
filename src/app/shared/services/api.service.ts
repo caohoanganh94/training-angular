@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 const apiUrl = 'http://blog-api.local/wp-json/wp/v2';
 
@@ -10,6 +10,7 @@ const apiUrl = 'http://blog-api.local/wp-json/wp/v2';
 })
 export class ApiService {
   private postsApi = `${apiUrl}/posts`;
+  private usersApi = `${apiUrl}/users`;
 
   constructor(
     private http: HttpClient
@@ -21,6 +22,12 @@ export class ApiService {
 
     return this.http.get<any>(url).pipe(
       catchError(this.handleError<any>('getPosts', []))
+    );
+  }
+
+  getUsers(): Observable<any> {
+    return this.http.get<any>(this.usersApi).pipe(
+      catchError(this.handleError<any>('getUsers', []))
     );
   }
 
