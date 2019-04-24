@@ -102,9 +102,13 @@
                     {{ post.title.rendered }}
                   </div>
                 </td>
-                <td>{{ users[post.author] }}</td>
-                <td>Categories</td>
-                <td>Tags</td>
+                <td>{{ post.author }}</td>
+                <td>
+                  <span *ngFor="let category of post.categories">{{ category.name }}, </span>
+                </td>
+                <td>
+                  <span *ngFor="let tag of post.tags">{{ tag.name }}, </span>
+                </td>
                 <td>{{ post.date }}</td>
               </tr>
             </ng-template>

@@ -34,7 +34,7 @@ export class PostListingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getUsers();
+    this.getPosts();
   }
 
   onChangeLimit(event) {
@@ -77,15 +77,6 @@ export class PostListingComponent implements OnInit {
     this.apiService.getPosts(this.params).subscribe(posts => {
       this.posts = posts;
       this.settings.loading = false;
-    });
-  }
-
-  getUsers() {
-    this.apiService.getUsers().subscribe(users => {
-      let usersArr = {};
-      users.map(user => usersArr[user.id] = user.name);
-      this.users = usersArr;
-      this.getPosts();
     });
   }
 
